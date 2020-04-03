@@ -1,11 +1,11 @@
 #include<iostream>
 #include "Basics.h"
-#include "ExtendedCk.h"
+//#include "ExtendedCk.h"
 #include "TROOT.h"
 #include "TGraph.h"
 #include "TFile.h"
 #include "TH1F.h"
-#include "Worksheet.h"
+//#include "Worksheet.h"
 
 void ComparePionPion(){
     TGraph* grCATS = Basics_PiPiCATS(1,1);
@@ -18,16 +18,32 @@ void ComparePionPion(){
     delete grTheory;
     delete OutputFile;
 }
-void DoSomeActuallPiPiFitting(){
-    Basics_PiPiCATS2(1,1);
+void DoSomeActuallPiPiFitting(char *argv[]){
+    unsigned* settings = new unsigned[3];
+    //settings[0] = atoi(argv[1]);
+    //settings[1] = atoi(argv[2]);
+    //settings[2] = atoi(argv[3]);
+    settings[0] = 0;
+    settings[1] = 1;
+
+    settings[2] = 0;
+    Basics_PiPiCATS2(1,1,settings);
+
+    settings[2] = 1;
+    Basics_PiPiCATS2(1,1,settings);
+
+    //settings[2] = 2;
+    //Basics_PiPiCATS2(1,1,settings);
+
+    delete [] settings;
 }
 void FitpLCF(){
-     TH1F* pLCF = Worksheet_ProtonLambda();
-     TFile* OutputFile2 = new TFile("ProtonLambdaUsmaniCF.root","recreate");
-     pLCF->Write();
+     //TH1F* pLCF = Worksheet_ProtonLambda();
+     //TFile* OutputFile2 = new TFile("ProtonLambdaUsmaniCF.root","recreate");
+     //pLCF->Write();
 
-     delete pLCF;
-     delete OutputFile2;
+     //delete pLCF;
+     //delete OutputFile2;
 }
 
 int main(int argc, char *argv[]){
@@ -37,7 +53,10 @@ int main(int argc, char *argv[]){
     printf("-------------------------------------------\n");
 
     //ComparePionPion();
-    DoSomeActuallPiPiFitting();
+
+DoSomeActuallPiPiFitting(argv);
+//Compare_AOD_nano();
+
     //FitpLCF();
     //Basics_ProtonLambda();
 

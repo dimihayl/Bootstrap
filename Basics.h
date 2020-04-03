@@ -16,11 +16,12 @@ double Basics_Potential_Usmani(double* pars);
 double Basics_Source_Gauss(double* Pars);
 //double CATS_FIT_PL(double* x, double* pars);
 void SetTheLambdaParamsToDML_DecompObj (DLM_CkDecomposition* CkDe_PiPi, bool verbose=false);
-std::vector<TH1D*> ExtractRelevantPlotsGF(string GentleFemto, int k, int m);
+std::vector<TH1D*> ExtractRelevantPlotsGF(string GentleFemto, int k, int m, int iVAR=-1);
 std::vector<double> CalculateLambdaParam(double pur1=0.99, double pur2=0, bool SamePart=true, bool extinput=false, bool verbose=true);
 std::vector<double> CalculateLambdaParam2(double pur1=0.99, double pur2=0, bool SamePart=true, bool extinput=false, bool verbose=true);
 
 TGraph* Basics_PiPiTheory(const bool& Identical, const bool& WithCoulomb);
 TGraph* Basics_PiPiCATS(const bool& Identical, const bool& WithCoulomb);
-void Basics_PiPiCATS2(const bool& Identical, const bool& WithCoulomb);
+void Basics_PiPiCATS2(const bool& Identical, const bool& WithCoulomb, unsigned* VariationSettings);
 void Basics_ProtonLambda();
+void Compare_AOD_nano();
